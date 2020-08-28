@@ -1,27 +1,71 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <section class="catalog">
+    <CatalogList :catalog="catalog" />
+    
+    <ul class="catalog__pagination pagination">
+      <li class="pagination__item">
+        <a class="pagination__link pagination__link--arrow pagination__link--disabled" aria-label="Предыдущая страница">
+          <svg width="8" height="14" fill="currentColor">
+            <use xlink:href="#icon-arrow-left"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="pagination__item">
+        <a class="pagination__link pagination__link--current">
+          1
+        </a>
+      </li>
+      <li class="pagination__item">
+        <a class="pagination__link" href="#">
+          2
+        </a>
+      </li>
+      <li class="pagination__item">
+        <a class="pagination__link" href="#">
+          3
+        </a>
+      </li>
+      <li class="pagination__item">
+        <a class="pagination__link" href="#">
+          4
+        </a>
+      </li>
+      <li class="pagination__item">
+        <a class="pagination__link" href="#">
+          ...
+        </a>
+      </li>
+      <li class="pagination__item">
+        <a class="pagination__link" href="#">
+          10
+        </a>
+      </li>
+      <li class="pagination__item">
+        <a class="pagination__link pagination__link--arrow" href="#" aria-label="Следующая страница">
+          <svg width="8" height="14" fill="currentColor">
+            <use xlink:href="#icon-arrow-right"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import catalog from './data/catalog';
+import CatalogList from './components/catalog/CatalogList.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    CatalogList,
+  },
+  data() {
+    return {
+      catalog,
+    };
   },
 };
 </script>
 
-<style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-</style>
+<!-- <style src="./assets/css/main.css" lang="stylus" /> -->

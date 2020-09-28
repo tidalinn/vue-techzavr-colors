@@ -1,69 +1,33 @@
 <template>
   <section class="catalog">
-    <CatalogList :catalog="catalog" />
+    <CatalogList :catalog="products" />
+    <BasePagination v-model="page" :page="page" :count="countProducts" :per-page="productsPerPage" />
     
-    <ul class="catalog__pagination pagination">
-      <li class="pagination__item">
-        <a class="pagination__link pagination__link--arrow pagination__link--disabled" aria-label="Предыдущая страница">
-          <svg width="8" height="14" fill="currentColor">
-            <use xlink:href="#icon-arrow-left"></use>
-          </svg>
-        </a>
-      </li>
-      <li class="pagination__item">
-        <a class="pagination__link pagination__link--current">
-          1
-        </a>
-      </li>
-      <li class="pagination__item">
-        <a class="pagination__link" href="#">
-          2
-        </a>
-      </li>
-      <li class="pagination__item">
-        <a class="pagination__link" href="#">
-          3
-        </a>
-      </li>
-      <li class="pagination__item">
-        <a class="pagination__link" href="#">
-          4
-        </a>
-      </li>
-      <li class="pagination__item">
-        <a class="pagination__link" href="#">
-          ...
-        </a>
-      </li>
-      <li class="pagination__item">
-        <a class="pagination__link" href="#">
-          10
-        </a>
-      </li>
-      <li class="pagination__item">
-        <a class="pagination__link pagination__link--arrow" href="#" aria-label="Следующая страница">
-          <svg width="8" height="14" fill="currentColor">
-            <use xlink:href="#icon-arrow-right"></use>
-          </svg>
-        </a>
-      </li>
-    </ul>
   </section>
 </template>
 
 <script>
 import catalog from './data/catalog';
 import CatalogList from './components/catalog/CatalogList.vue';
+import BasePagination from './components/catalog/BasePagination.vue';
 
 export default {
   name: 'App',
-  components: {
-    CatalogList,
-  },
+  components: { CatalogList, BasePagination },
   data() {
     return {
-      catalog,
+      page: 1,
+      productsPerPage: 6,
     };
+  },
+  computed: {
+    products() {
+      const offset = (this.page - 1) * this.productsPerPage;
+      return catalog.slice(offset, offset + this.productsPerPage);
+    },
+    countProducts() {
+      return catalog.length;
+    },
   },
 };
 </script>

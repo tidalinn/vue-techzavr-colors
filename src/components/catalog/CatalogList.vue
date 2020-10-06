@@ -9,9 +9,7 @@ import CatalogItem from './CatalogItem.vue';
 
 export default {
   props: ['catalog'],
-  components: {
-    CatalogItem,
-  },
+  components: { CatalogItem },
 };
 </script>
 

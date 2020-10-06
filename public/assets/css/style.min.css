@@ -523,6 +523,10 @@ a {
 	border: 1px solid transparent
 }
 
+.colors__label--catalog .colors__value::before {
+	border: 1px solid #EDEDED
+}
+
 .colors__label:focus .colors__value::before,
 .colors__label:hover .colors__value::before,
 .colors__radio:checked~.colors__value::before {

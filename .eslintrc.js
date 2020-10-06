@@ -17,6 +17,5 @@ module.exports = {
     'linebreak-style': 0,
     'eol-last': ['error', 'never'],
     'max-len': ['error', { code: 500 }],
-
   },
 };

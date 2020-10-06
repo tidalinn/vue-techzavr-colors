@@ -4,3 +4,4 @@
 - Created two files CatalogList.vue and CatalogItem.vue
 - Created pagination component
 - Created keys for catalogue elements + colors switcher
+- Created aside filter component + price / category / color filter

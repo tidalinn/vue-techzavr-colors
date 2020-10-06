@@ -1,6 +1,8 @@
 const catalog = [
   {
     id: 1,
+    categoryId: 2,
+    colorsId: [1, 2, 3],
     title: 'Непобедимое солнце',
     author: 'Виктор Пелевин',
     publisher: 'Эксмо',
@@ -13,6 +15,8 @@ const catalog = [
   },
   {
     id: 2,
+    categoryId: 3,
+    colorsId: [4, 5, 6],
     title: 'Влюбленная ведьма. Книга 2',
     author: 'Анна Джейн',
     publisher: 'Клевер',
@@ -25,6 +29,8 @@ const catalog = [
   },
   {
     id: 3,
+    categoryId: 4,
+    colorsId: [1, 2, 6],
     title: 'Колесо Времени. Книга 3. Дракон Возрожденный',
     author: 'Роберт Джордан',
     publisher: 'Азбука СПб',
@@ -37,6 +43,8 @@ const catalog = [
   },
   {
     id: 4,
+    categoryId: 5,
+    colorsId: [3, 4, 6],
     title: 'Зеркало королевы. Другая история Белоснежки',
     author: 'Джен Калонита',
     publisher: 'Эксмодетство',
@@ -49,6 +57,8 @@ const catalog = [
   },
   {
     id: 5,
+    categoryId: 1,
+    colorsId: [1, 2, 3],
     title: 'Месть Тьмы. Кровь за кровь',
     author: 'Сергей Тармашев',
     publisher: 'АСТ',
@@ -61,6 +71,8 @@ const catalog = [
   },
   {
     id: 6,
+    categoryId: 5,
+    colorsId: [1, 5, 6],
     title: 'Понедельник начинается в субботу',
     author: 'Аркадий и Борис Стругацкие',
     publisher: 'АСТ',
@@ -73,6 +85,8 @@ const catalog = [
   },
   {
     id: 7,
+    categoryId: 5,
+    colorsId: [1, 4, 5],
     title: 'Просто Маса',
     author: 'Борис Акунин',
     publisher: 'АСТ',
@@ -85,6 +99,8 @@ const catalog = [
   },
   {
     id: 8,
+    categoryId: 1,
+    colorsId: [1, 4, 6],
     title: 'Призрак в доспехах 1',
     author: 'Сиро Масамунэ',
     publisher: 'Азбука',
@@ -97,6 +113,8 @@ const catalog = [
   },
   {
     id: 9,
+    categoryId: 3,
+    colorsId: [1, 2, 3],
     title: 'Ария. Том1',
     author: 'Амано Кодзуэ',
     publisher: '',
@@ -109,6 +127,8 @@ const catalog = [
   },
   {
     id: 10,
+    categoryId: 4,
+    colorsId: [3, 4],
     title: 'Марсоход. Покоритель космоса',
     author: 'Аванта',
     publisher: 'АСТ',
@@ -121,6 +141,8 @@ const catalog = [
   },
   {
     id: 11,
+    categoryId: 6,
+    colorsId: [5, 6],
     title: 'Silent Hill. Навстречу ужасу. Игры и теория страха',
     author: 'Бернар Перрон',
     publisher: 'Бомбора',
@@ -133,6 +155,8 @@ const catalog = [
   },
   {
     id: 12,
+    categoryId: 2,
+    colorsId: [1, 2, 3],
     title: 'Обещанная страна грез. Книга 1',
     author: 'Каиу Сираи',
     publisher: 'Истари Комикс',
@@ -145,6 +169,8 @@ const catalog = [
   },
   {
     id: 13,
+    categoryId: 4,
+    colorsId: [1, 2, 5],
     title: 'Собрание птиц',
     author: 'Ренсом Риггз',
     publisher: 'АСТ',

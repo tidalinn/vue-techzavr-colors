@@ -39,16 +39,6 @@ export default {
     paginate(page) {
       this.$emit('paginate', page);
     },
-    previousPage(page) {
-      if (page !== 1) {
-        this.$emit('paginate', page - 1);
-      }
-    },
-    nextPage(page) {
-      if (page !== this.pages) {
-        this.$emit('paginate', page + 1);
-      }
-    },
     changePage(page) {
       if (page !== 1) {
         this.$emit('paginate', page - 1);

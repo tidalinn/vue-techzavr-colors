@@ -28,39 +28,15 @@
         </label>
       </fieldset>
 
-      <!-- Filter Category -->
-      <!-- <CatalogFilterCategory :category-id="currentCategoryId" /> -->
-
       <!-- Color filter -->
       <fieldset class="form__block">
         <legend class="form__legend">Цвет</legend>
         <ul class="colors">
-          <li class="colors__item" v-for="color in colors" :key="color.id">
-            <label class="colors__label">
-              <input class="colors__radio sr-only" type="radio" name="color" :value="color.id" v-model.number="currentColorId">
-              <span class="colors__value" :style="{'background-color': color.color}">
-              </span>
-            </label>
-          </li>
+          <CatalogItemColor v-for="color in colors" :key="color.id"
+                        :value-color="color.color"
+                        :check-color.sync="color.id" />
         </ul>
       </fieldset>
-
-      <!-- Filter Component -->
-      <!-- <fieldset class="form__block">
-        <legend class="form__legend">Цвет</legend>
-          <ul class="colors">
-            <CatalogFilterColors v-for="color in colors" :key="color.id"
-                                 :color="color" :value-color="currentColorId" />
-          </ul>
-      </fieldset> -->
-
-      <!-- Volume filter -->
-      <!--<fieldset class="form__block">
-        <legend class="form__legend">Объемб в ГБ</legend>
-          <ul class="check-list">
-            <CatalogFilterVolume />
-        </ul>
-      </fieldset>-->
 
       <button class="filter__submit button button--primery" type="submit">Применить</button>
       <button class="filter__reset button button--second" type="button" @click.prevent="reset">Сбросить</button>
@@ -71,8 +47,7 @@
 <script>
 import categories from '../../data/categories';
 import colors from '../../data/colors';
-// import CatalogFilterCategory from './CatalogFilterCategory.vue';
-// import CatalogFilterColors from './CatalogFilterColors.vue';
+import CatalogItemColor from './CatalogItemColor.vue';
 
 export default {
   data() {
@@ -84,7 +59,7 @@ export default {
     };
   },
   props: ['priceFrom', 'priceTo', 'categoryId', 'colorId'],
-  // components: { CatalogFilterCategory, CatalogFilterColors, },
+  components: { CatalogItemColor },
   computed: {
     categories() {
       return categories;

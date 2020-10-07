@@ -2,7 +2,7 @@
   <main class="content container">
     <div class="content__top content__top--catalog">
       <h1 class="content__title">Каталог</h1>
-      <span class="content__info">{{ countProducts }} {{ wordDecline(countProducts, ['товар', 'товара', 'товаров']) }}</span>
+      <span class="content__info">{{ countProducts }} {{ countProducts | wordDecline(['товар', 'товара', 'товаров']) }}</span>
     </div>
     <div class="content__catalog"> 
       <CatalogFilter :price-from.sync="filterPriceFrom" 
@@ -23,6 +23,7 @@ import catalog from './data/catalog';
 import CatalogList from './components/catalog/CatalogList.vue';
 import BasePagination from './components/catalog/BasePagination.vue';
 import CatalogFilter from './components/catalog/CatalogFilter.vue';
+import wordDecline from './helpers/wordDecline';
 
 export default {
   name: 'App',
@@ -63,26 +64,7 @@ export default {
       return this.filteredCatalog.length;
     },
   },
-  methods: {
-    wordDecline(num, expressions) {
-      let result;
-      let count = num % 100;
-
-      if (count >= 5 && count <= 20) {
-        result = expressions['2'];
-      } else {
-        count %= 10;
-        if (count === 1) {
-          result = expressions['0'];
-        } else if (count >= 2 && count <= 4) {
-          result = expressions['1'];
-        } else {
-          result = expressions['2'];
-        }
-      }
-      return result;
-    },
-  },
+  filters: { wordDecline },
 };
 </script>
 

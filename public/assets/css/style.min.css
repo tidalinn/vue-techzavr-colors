@@ -520,11 +520,11 @@ a {
 	transform: translate(-50%, -50%);
 	width: 26px;
 	height: 26px;
-	border: 1px solid transparent
+	border: 1px solid #EDEDED
 }
 
-.colors__label--catalog .colors__value::before {
-	border: 1px solid #EDEDED
+.form__block .colors__value::before {
+	border: 1px solid transparent
 }
 
 .colors__label:focus .colors__value::before,

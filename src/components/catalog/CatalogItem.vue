@@ -12,11 +12,9 @@
     <span class="catalog__price"> {{ product.price }} ₽</span>
 
     <ul class="colors colors--black">
-      <!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
-      <CatalogItemColor v-for="colorItem in colors" :key="colorItem.id"
-                        v-if="product.colorsId.includes(colorItem.id)" 
-                        :value-color="colorItem.color" 
-                        :check-color="colors[currentColor-1].color" />
+      <CatalogItemColor v-for="color in actualColors" :key="color.id"
+                        :value-color="color.color" 
+                        :check-color.sync="actualColors[0]" />
     </ul>
   </li>
 </template>
@@ -24,23 +22,20 @@
 <script>
 import CatalogItemColor from './CatalogItemColor.vue';
 import colors from '../../data/colors';
+import filteredColors from '../../helpers/filteredColors';
 
 export default {
-  data() {
-    return {
-      currentColor: this.product.colorsId[0],
-    };
-  },
   props: ['product'],
   components: { CatalogItemColor },
-  computed: {
-    colors() {
-      return colors;
-    },
-  },
+  filters: { filteredColors },
   methods: {
     productColors() {
       return this.product.colorsId;
+    },
+  },
+  computed: {
+    actualColors() {
+      return filteredColors(colors, this.product);
     },
   },
 };

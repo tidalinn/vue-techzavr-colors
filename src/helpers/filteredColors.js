@@ -1,3 +1,7 @@
+// function filtrates the incoming Object of colors and creates new massive of product's colors
+// @colors - incoming Object
+// @product - prop value
+
 export default function filteredColors(colors, product) {
   const keys = Object.keys(colors);
   const values = Object.values(colors);

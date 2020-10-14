@@ -1,3 +1,7 @@
+// function declines words 
+// @num - number in accordance with the declination is produced
+// @expressions - massive of declined words like ['товар', 'товара', 'товаров']
+
 export default function wordDecline(num, expressions) {
   let result;
   let count = num % 100;

@@ -7,8 +7,7 @@
     <div class="content__catalog"> 
       <CatalogFilter :price-from.sync="filterPriceFrom" 
                      :price-to.sync="filterPriceTo" 
-                     :category-id.sync="filterCategoryId" 
-                     :color-id.sync="filterColorId" /> 
+                     :category-id.sync="filterCategoryId" /> 
       <section class="catalog">
         <h4 class="catalog__void" v-if="products.length === 0">Упс, здесь ничего нет</h4>
         <CatalogList :catalog="products" />
@@ -20,6 +19,7 @@
 
 <script>
 import catalog from './data/catalog';
+import colors from './data/colors';
 import CatalogList from './components/catalog/CatalogList.vue';
 import BasePagination from './components/catalog/BasePagination.vue';
 import CatalogFilter from './components/catalog/CatalogFilter.vue';
@@ -35,9 +35,9 @@ export default {
       filterPriceFrom: 0,
       filterPriceTo: 0,
       filterCategoryId: 0,
-      filterColorId: 0,
     };
   },
+  filters: { wordDecline },
   computed: {
     filteredCatalog() {
       let filteredCatalog = catalog;
@@ -51,9 +51,6 @@ export default {
       if (this.filterCategoryId > 0) {
         filteredCatalog = filteredCatalog.filter((product) => product.categoryId === this.filterCategoryId);
       }
-      if (this.filterColorId > 0) {
-        filteredCatalog = filteredCatalog.filter((product) => product.colorsId.includes(this.filterColorId));
-      }
       return filteredCatalog;
     },
     products() {
@@ -64,7 +61,6 @@ export default {
       return this.filteredCatalog.length;
     },
   },
-  filters: { wordDecline },
 };
 </script>
 

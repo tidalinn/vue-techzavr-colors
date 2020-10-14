@@ -529,7 +529,7 @@ a {
 
 .colors__label:focus .colors__value::before,
 .colors__label:hover .colors__value::before,
-.colors__radio:checked~.colors__value::before {
+.colors__radio:checked~.colors__value--selected::before {
 	border-color: var(--border-color)
 }
 

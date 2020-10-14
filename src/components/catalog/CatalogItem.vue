@@ -10,28 +10,21 @@
       <a href="#"> {{ product.author }} </a>
     </h4>
     <span class="catalog__price"> {{ product.price }} ₽</span>
-
-    <ul class="colors colors--black">
-      <CatalogItemColor v-for="color in actualColors" :key="color.id"
-                        :value-color="color.color" 
-                        :check-color.sync="actualColors[0]" />
-    </ul>
+    
+    <CatalogColors :class="{'colors--black': actualColors}" :colors="actualColors" />
   </li>
 </template>
 
 <script>
-import CatalogItemColor from './CatalogItemColor.vue';
 import colors from '../../data/colors';
+import CatalogColors from './CatalogColors.vue';
 import filteredColors from '../../helpers/filteredColors';
 
 export default {
   props: ['product'],
-  components: { CatalogItemColor },
-  filters: { filteredColors },
-  methods: {
-    productColors() {
-      return this.product.colorsId;
-    },
+  components: { CatalogColors },
+  filters: { 
+    color: filteredColors,
   },
   computed: {
     actualColors() {

@@ -1,6 +1,6 @@
 <template>
   <li class="catalog__item">
-    <a class="catalog__pic" href="#">
+    <a class="catalog__pic" href="#" @click.prevent="$emit('gotoPage', 'product', {id: product.id})">
       <img :src="product.image" :alt="product.title">
     </a>
     <h3 class="catalog__title">
@@ -11,7 +11,11 @@
     </h4>
     <span class="catalog__price"> {{ product.price }} ₽</span>
     
-    <CatalogColors :class="{'colors--black': actualColors}" :colors="actualColors" />
+    <ul class="colors">
+      <CatalogColors :class="{'colors--black': actualColors}"
+                     v-for="color in actualColors" :key="color.id" :valueColor="color.color" 
+                     @select="selectColor" :selected-color="selectedColor" />
+    </ul>
   </li>
 </template>
 
@@ -21,10 +25,20 @@ import CatalogColors from './CatalogColors.vue';
 import filteredColors from '../../helpers/filteredColors';
 
 export default {
+  data() {
+    return {
+      selectedColor: null,
+    };
+  },
   props: ['product'],
   components: { CatalogColors },
   filters: { 
     color: filteredColors,
+  },
+  methods: {
+    selectColor(valueColor) {
+      this.selectedColor = valueColor;
+    },
   },
   computed: {
     actualColors() {

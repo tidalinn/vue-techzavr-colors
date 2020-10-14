@@ -1,0 +1,20 @@
+.notfound__page {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.notfound__header {
+    font-family: "PressStart";
+    font-size: 25px;
+    line-height: 35px;
+    text-transform: uppercase;
+}
+
+.notfound__description p {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.notfound__description a:hover {
+    color: #9EFF00;
+}

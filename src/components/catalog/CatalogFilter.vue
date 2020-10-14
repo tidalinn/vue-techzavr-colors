@@ -31,7 +31,10 @@
       <!-- Color filter -->
       <fieldset class="form__block">
         <legend class="form__legend">Цвет</legend>
-        <CatalogColors :colors="colors" />
+        <ul class="colors">
+          <CatalogColors v-for="color in colors" :key="color.id" :valueColor="color.color" 
+                         @select="selectColor" :selected-color="currentColor"/>
+        </ul>
       </fieldset>
 
       <button class="filter__submit button button--primery" type="submit">Применить</button>
@@ -51,9 +54,10 @@ export default {
       currentPriceFrom: 0,
       currentPriceTo: 0,
       currentCategoryId: 0,
+      currentColor: null,
     };
   },
-  props: ['priceFrom', 'priceTo', 'categoryId'],
+  props: ['priceFrom', 'priceTo', 'categoryId', 'colorCode'],
   components: { CatalogColors },
   computed: {
     categories() {
@@ -73,17 +77,25 @@ export default {
     categoryId(value) {
       this.currentCategoryId = value;
     },
+    colorCode(value) {
+      this.currentColor = value;
+    },
   },
   methods: {
     submit() {
       this.$emit('update:priceFrom', this.currentPriceFrom);
       this.$emit('update:priceTo', this.currentPriceTo);
       this.$emit('update:categoryId', this.currentCategoryId);
+      this.$emit('update:colorCode', this.currentColor);
     },
     reset() {
       this.$emit('update:priceFrom', 0);
       this.$emit('update:priceTo', 0);
       this.$emit('update:categoryId', 0);
+      this.$emit('update:colorCode', null);
+    },
+    selectColor(valueColor) {
+      this.currentColor = valueColor;
     },
   },
 };

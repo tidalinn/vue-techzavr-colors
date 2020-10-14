@@ -5,3 +5,4 @@
 - Created pagination component
 - Created keys for catalogue elements + colors switcher
 - Created aside filter component + price / category / color filter
+- Created pagination with $emit from child to parent

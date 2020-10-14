@@ -1,24 +1,23 @@
 <template>
-  <ul class="colors">
-    <CatalogColorsItem v-for="color in colors" :key="color.id" :valueColor="color.color" 
-                       @select="selectColor" :selected-color="selectedColor" />
-  </ul>
+  <li class="colors__item" @click="select">
+    <label class="colors__label colors__label--catalog">
+      <input class="colors__radio sr-only" type="radio" :value="valueColor">
+      <span class="colors__value" :class="{'colors__value--selected': isSelected}" :style="{'background-color': valueColor}"></span>
+    </label>
+  </li>
 </template>
 
 <script>
-import CatalogColorsItem from './CatalogColorsItem.vue';
-
 export default {
-  data() {
-    return {
-      selectedColor: null,
-    };
+  props: ['valueColor', 'selectedColor'],
+  computed: {
+    isSelected() {
+      return this.valueColor === this.selectedColor;
+    },
   },
-  props: ['colors'],
-  components: { CatalogColorsItem },
   methods: {
-    selectColor(valueColor) {
-      this.selectedColor = valueColor;
+    select() {
+      this.$emit('select', this.valueColor);
     },
   },
 };

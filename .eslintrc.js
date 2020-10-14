@@ -16,6 +16,6 @@ module.exports = {
     'no-trailing-spaces': 0,
     'linebreak-style': 0,
     'eol-last': ['error', 'never'],
-    'max-len': ['error', { code: 500 }],
+    'max-len': ['error', { code: 700 }],
   },
 };

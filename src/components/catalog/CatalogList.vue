@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import CatalogItem from './CatalogItem.vue';
+import CatalogItem from '@/components/catalog/CatalogItem.vue';
 
 export default {
   props: ['catalog'],

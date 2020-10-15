@@ -6,3 +6,4 @@
 - Created keys for catalogue elements + colors switcher
 - Created aside filter component + price / category / color filter
 - Created pagination with $emit from child to parent
+- Created eventBus.js and added products properties to the ProductPage

@@ -8,8 +8,6 @@
   </div>
 </template>
 
-<style src="../../public/assets/css/notfoundpage.css" />
-
 <script>
 export default {
 };

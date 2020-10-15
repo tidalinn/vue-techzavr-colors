@@ -11,7 +11,7 @@
                      :color-code.sync="filterColor" /> 
       <section class="catalog">
         <h4 class="catalog__void" v-if="products.length === 0">Упс, здесь ничего нет</h4>
-        <CatalogList :catalog="products" @gotoPage="(pageName, pageParams) => $emit('gotoPage', pageName, pageParams)" />
+        <CatalogList :catalog="products" />
         <BasePagination v-model="page" :page="page" :count="countProducts" :per-page="productsPerPage" />  
       </section>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <li class="catalog__item">
-    <a class="catalog__pic" href="#" @click.prevent="$emit('gotoPage', 'product', {id: product.id})">
+    <a class="catalog__pic" href="#" @click.prevent="gotoPage('product', {id: product.id})">
       <img :src="product.image" :alt="product.title">
     </a>
     <h3 class="catalog__title">
@@ -9,7 +9,7 @@
     <h4 class="catalog__author">
       <a href="#"> {{ product.author }} </a>
     </h4>
-    <span class="catalog__price"> {{ product.price }} ₽</span>
+    <span class="catalog__price"> {{ product.price | numberFormat }} ₽</span>
     
     <ul class="colors">
       <CatalogColors :class="{'colors--black': actualColors}"
@@ -20,9 +20,11 @@
 </template>
 
 <script>
-import colors from '../../data/colors';
-import CatalogColors from './CatalogColors.vue';
-import filteredColors from '../../helpers/filteredColors';
+import colors from '@/data/colors';
+import CatalogColors from '@/components/catalog/CatalogColors.vue';
+import filteredColors from '@/helpers/filteredColors';
+import gotoPage from '@/helpers/gotoPage';
+import numberFormat from '@/helpers/numberFormat';
 
 export default {
   data() {
@@ -34,11 +36,13 @@ export default {
   components: { CatalogColors },
   filters: { 
     color: filteredColors,
+    numberFormat,
   },
   methods: {
     selectColor(valueColor) {
       this.selectedColor = valueColor;
     },
+    gotoPage, // defining the helper in methods
   },
   computed: {
     actualColors() {

@@ -44,9 +44,9 @@
 </template>
 
 <script>
-import CatalogColors from './CatalogColors.vue';
-import categories from '../../data/categories';
-import colors from '../../data/colors';
+import CatalogColors from '@/components/catalog/CatalogColors.vue';
+import categories from '@/data/categories';
+import colors from '@/data/colors';
 
 export default {
   data() {

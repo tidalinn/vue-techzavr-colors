@@ -13,7 +13,7 @@
     
     <ul class="colors">
       <CatalogColors :class="{'colors--black': actualColors}"
-                     v-for="color in actualColors" :key="color.id" :valueColor="color.color" 
+                     v-for="color in actualColors" :key="color.id" :valueColor="color" 
                      @select="selectColor" :selected-color="selectedColor" />
     </ul>
   </li>
@@ -29,7 +29,7 @@ import numberFormat from '@/helpers/numberFormat';
 export default {
   data() {
     return {
-      selectedColor: null,
+      selectedColor: {},
     };
   },
   props: ['product'],
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     selectColor(valueColor) {
-      this.selectedColor = valueColor;
+      this.selectedColor = { id: valueColor.id, color: valueColor.color };
     },
     gotoPage, // defining the helper in methods
   },

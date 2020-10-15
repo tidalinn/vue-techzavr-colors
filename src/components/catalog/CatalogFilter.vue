@@ -32,7 +32,7 @@
       <fieldset class="form__block">
         <legend class="form__legend">Цвет</legend>
         <ul class="colors">
-          <CatalogColors v-for="color in colors" :key="color.id" :valueColor="color.color" 
+          <CatalogColors v-for="color in colors" :key="color.id" :valueColor="color" 
                          @select="selectColor" :selected-color="currentColor"/>
         </ul>
       </fieldset>
@@ -54,7 +54,7 @@ export default {
       currentPriceFrom: 0,
       currentPriceTo: 0,
       currentCategoryId: 0,
-      currentColor: null,
+      currentColor: {},
     };
   },
   props: ['priceFrom', 'priceTo', 'categoryId', 'colorCode'],
@@ -92,10 +92,10 @@ export default {
       this.$emit('update:priceFrom', 0);
       this.$emit('update:priceTo', 0);
       this.$emit('update:categoryId', 0);
-      this.$emit('update:colorCode', null);
+      this.$emit('update:colorCode', {});
     },
     selectColor(valueColor) {
-      this.currentColor = valueColor;
+      this.currentColor = { id: valueColor.id, color: valueColor.color };
     },
   },
 };

@@ -36,7 +36,7 @@ export default {
       filterPriceFrom: 0,
       filterPriceTo: 0,
       filterCategoryId: 0,
-      filterColor: null,
+      filterColor: {},
     };
   },
   filters: { wordDecline },
@@ -53,8 +53,8 @@ export default {
       if (this.filterCategoryId > 0) {
         filteredCatalog = filteredCatalog.filter((product) => product.categoryId === this.filterCategoryId);
       }
-      if (this.filterColor !== null) {
-        filteredCatalog = filteredCatalog.filter((product) => filteredColors(colors, product)[0].color === this.filterColor);
+      if (Object.keys(this.filterColor).length !== 0) {
+        filteredCatalog = filteredCatalog.filter((product) => filteredColors(colors, product)[0].id === this.filterColor.id);
       }
       return filteredCatalog;
     },

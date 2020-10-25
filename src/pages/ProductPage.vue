@@ -3,10 +3,10 @@
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="#" @click.prevent="gotoPage('main')">Каталог</a>
+          <router-link class="breadcrumbs__link" :to="{name: 'main'}">Каталог</router-link>
         </li>
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="#" @click.prevent="gotoPage('main')">{{ category.title }}</a>
+          <router-link class="breadcrumbs__link" :to="{name: 'main'}">{{ category.title }}</router-link>
         </li>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link">{{ product.title }}</a>
@@ -35,7 +35,7 @@
         <h2 class="item__title">{{ product.title }}</h2>
         <h3 class="item__author">{{ product.author }}</h3>
         <div class="item__form">
-          <form class="form" action="#" method="POST">
+          <form class="form" action="#" method="POST" @submit.prevent="addToCart">
             <b class="item__price">{{ product.price | numberFormat }} ₽</b>
 
             <!-- Colors -->
@@ -48,25 +48,8 @@
             </fieldset>
 
             <div class="item__row">
-              <div class="form__counter">
-                <button type="button" aria-label="Убрать один товар">
-                  <svg width="12" height="12" fill="currentColor">
-                    <use xlink:href="#icon-minus"></use>
-                  </svg>
-                </button>
-
-                <input type="text" value="1" name="count">
-
-                <button type="button" aria-label="Добавить один товар">
-                  <svg width="12" height="12" fill="currentColor">
-                    <use xlink:href="#icon-plus"></use>
-                  </svg>
-                </button>
-              </div>
-
-              <button class="button button--primery" type="submit">
-                В корзину
-              </button>
+              <BaseAddReduceAmount v-model.number="productAmount" :amount="productAmount" :width="12" />
+              <button class="button button--primery" type="submit">В корзину</button>
             </div>
           </form>
         </div>
@@ -75,33 +58,23 @@
       <div class="item__desc">
         <ul class="tabs">
           <li class="tabs__item">
-            <a class="tabs__link tabs__link--current">
-              Описание
-            </a>
+            <a class="tabs__link tabs__link--current">Описание</a>
           </li>
           <li class="tabs__item">
-            <a class="tabs__link" href="#">
-              Характеристики
-            </a>
+            <a class="tabs__link" href="#">Характеристики</a>
           </li>
           <li class="tabs__item">
-            <a class="tabs__link" href="#">
-              Гарантия
-            </a>
+            <a class="tabs__link" href="#">Гарантия</a>
           </li>
           <li class="tabs__item">
-            <a class="tabs__link" href="#">
-              Оплата и доставка
-            </a>
+            <a class="tabs__link" href="#">Оплата и доставка</a>
           </li>
         </ul>
 
         <div class="item__content">
           <p>{{ product.description }}</p>
           
-          <a href="#">
-            Все характеристики
-          </a>
+          <a href="#">Все характеристики</a>
 
           <div class="item__details">
             <p>Автор: <span>{{ product.author }}</span></p>
@@ -118,6 +91,7 @@
 
 <script>
 import CatalogColors from '@/components/catalog/CatalogColors.vue';
+import BaseAddReduceAmount from '@/components/BaseAddReduceAmount.vue';
 import catalog from '@/data/catalog';
 import categories from '@/data/categories';
 import colors from '@/data/colors';
@@ -129,10 +103,10 @@ export default {
   data() {
     return {
       selectedColor: null,
+      productAmount: 1,
     };
   },
-  props: ['pageParams'],
-  components: { CatalogColors },
+  components: { CatalogColors, BaseAddReduceAmount },
   filters: {
     numberFormat,
   },
@@ -140,11 +114,17 @@ export default {
     selectColor(valueColor) {
       this.selectedColor = valueColor;
     },
-    gotoPage, // defining the helper in methods
+    addToCart() {
+      this.$store.commit(
+        'addProductToCart',
+        { productId: this.product.id, amount: this.productAmount },
+      );
+    },
+    gotoPage,
   },
   computed: {
     product() {
-      return catalog.find((product) => product.id === this.pageParams.id);
+      return catalog.find((product) => product.id === +this.$route.params.id);
     },
     category() {
       return categories.find((category) => category.id === this.product.categoryId);

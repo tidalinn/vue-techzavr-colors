@@ -157,7 +157,8 @@ a {
 	background-color: transparent;
 	-webkit-tap-highlight-color: transparent;
 	width: 20px;
-	height: 20px
+	height: 20px;
+	cursor: pointer
 }
 
 .header {
@@ -416,6 +417,10 @@ a {
 	font: inherit
 }
 
+.form__counter button.button__link--disabled {
+	cursor: not-allowed;
+}
+
 .form__counter button {
 	margin: 0;
 	padding: 0;
@@ -423,7 +428,8 @@ a {
 	display: block;
 	-ms-flex-negative: 0;
 	flex-shrink: 0;
-	width: 40px
+	width: 40px;
+	cursor: pointer
 }
 
 .form__counter input {
@@ -1272,27 +1278,6 @@ a {
 .social__link:focus,
 .social__link:hover {
 	opacity: .5
-}
-
-.notfound__page {
-    text-align: center;
-    margin-top: 150px;
-}
-
-.notfound__header {
-    font-family: "PressStart";
-    font-size: 25px;
-    line-height: 35px;
-    text-transform: uppercase;
-}
-
-.notfound__description p {
-    font-size: 20px;
-    margin-top: 20px;
-}
-
-.notfound__description a:hover {
-    color: #9EFF00;
 }
 
 .footer {

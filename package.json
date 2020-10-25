@@ -1,5 +1,5 @@
 {
-  "name": "3.4_vue-catalogue",
+  "name": "3.4_vue-techzavr",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.7",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -24,19 +26,18 @@
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.6.11"
   },
-  "description": "[![Build status](https://ci.appveyor.com/api/projects/status/eqxotdip3gv809ja/branch/master?svg=true)](https://ci.appveyor.com/project/CarolineFell/3-4-vue-catalogue/branch/master)",
   "main": ".eslintrc.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CarolineFell/3.4_vue-catalogue.git"
+    "url": "git+https://github.com/tidalinn/vue-techzavr.git"
   },
   "keywords": [
-    "vue-catalogue"
+    "vue-techzavr"
   ],
   "author": "Gradt",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CarolineFell/3.4_vue-catalogue/issues"
+    "url": "https://github.com/tidalinn/vue-techzavr/issues"
   },
-  "homepage": "https://github.com/CarolineFell/3.4_vue-catalogue#readme"
+  "homepage": "https://github.com/tidalinn/vue-techzavr#readme"
 }

@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import '@/assets/css/notfoundpage.css';
+
 export default {
 };
 </script>

@@ -20,12 +20,10 @@
 
 <script>
 import catalog from '@/data/catalog';
-import colors from '@/data/colors';
 import CatalogList from '@/components/catalog/CatalogList.vue';
 import BasePagination from '@/components/BasePagination.vue';
 import CatalogFilter from '@/components/catalog/CatalogFilter.vue';
 import wordDecline from '@/helpers/wordDecline';
-import filteredColors from '@/helpers/filteredColors';
 
 export default {
   components: { CatalogList, BasePagination, CatalogFilter },
@@ -36,7 +34,7 @@ export default {
       filterPriceFrom: 0,
       filterPriceTo: 0,
       filterCategoryId: 0,
-      filterColor: {},
+      filterColor: 0,
     };
   },
   filters: { wordDecline },
@@ -53,8 +51,8 @@ export default {
       if (this.filterCategoryId > 0) {
         filteredCatalog = filteredCatalog.filter((product) => product.categoryId === this.filterCategoryId);
       }
-      if (Object.keys(this.filterColor).length !== 0) {
-        filteredCatalog = filteredCatalog.filter((product) => filteredColors(colors, product)[0].id === this.filterColor.id);
+      if (this.filterColor !== 0) {
+        filteredCatalog = filteredCatalog.filter((product) => product.colorsId.includes(this.filterColor));
       }
       return filteredCatalog;
     },

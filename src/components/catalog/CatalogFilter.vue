@@ -32,8 +32,12 @@
       <fieldset class="form__block">
         <legend class="form__legend">Цвет</legend>
         <ul class="colors">
-          <CatalogColors v-for="color in colors" :key="color.id" :valueColor="color" 
-                         @select="selectColor" :selected-color="currentColor"/>
+          <li class="colors__item" v-for="color in colors" :key="color.id">
+            <label class="colors__label colors__label--catalog">
+              <input class="colors__radio sr-only" type="radio" :value="color.id" v-model="currentColor">
+              <span class="colors__value" :class="{'colors__value--selected': selectColor}" :style="{'background-color': color.color}"></span>
+            </label>
+          </li>
         </ul>
       </fieldset>
 
@@ -44,7 +48,6 @@
 </template>
 
 <script>
-import CatalogColors from '@/components/catalog/CatalogColors.vue';
 import categories from '@/data/categories';
 import colors from '@/data/colors';
 
@@ -54,11 +57,10 @@ export default {
       currentPriceFrom: 0,
       currentPriceTo: 0,
       currentCategoryId: 0,
-      currentColor: {},
+      currentColor: 0,
     };
   },
   props: ['priceFrom', 'priceTo', 'categoryId', 'colorCode'],
-  components: { CatalogColors },
   computed: {
     categories() {
       return categories;
@@ -92,10 +94,10 @@ export default {
       this.$emit('update:priceFrom', 0);
       this.$emit('update:priceTo', 0);
       this.$emit('update:categoryId', 0);
-      this.$emit('update:colorCode', {});
+      this.$emit('update:colorCode', 0);
     },
     selectColor(valueColor) {
-      this.currentColor = { id: valueColor.id, color: valueColor.color };
+      this.currentColor = valueColor;
     },
   },
 };

@@ -488,6 +488,10 @@ a {
 	flex-wrap: wrap
 }
 
+.colors div {
+	display: flex;
+	flex-wrap: nowrap;
+}
 .colors--black {
 	--border-color: #222
 }

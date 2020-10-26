@@ -42,8 +42,14 @@
             <fieldset class="form__block">
               <legend class="form__legend">Цвет:</legend>
               <ul class="colors">
-                <CatalogColors v-for="color in actualColors" :key="color.id" :valueColor="color.color" 
-                               @select="selectColor" :selected-color="selectedColor" />
+                <ul class="colors" >
+                  <li class="colors__item" v-for="color in actualColors" :key="color.id">
+                    <label class="colors__label colors__label--catalog">
+                      <input class="colors__radio sr-only" type="radio" :value="color.color" v-model="selectedColor">
+                      <span class="colors__value" :class="{'colors__value--selected': selectColor}" :style="{'background-color': color.color}"></span>
+                    </label>
+                  </li>
+                </ul>
               </ul>
             </fieldset>
 
@@ -90,7 +96,6 @@
 </template>
 
 <script>
-import CatalogColors from '@/components/catalog/CatalogColors.vue';
 import BaseAddReduceAmount from '@/components/BaseAddReduceAmount.vue';
 import catalog from '@/data/catalog';
 import categories from '@/data/categories';
@@ -106,7 +111,7 @@ export default {
       productAmount: 1,
     };
   },
-  components: { CatalogColors, BaseAddReduceAmount },
+  components: { BaseAddReduceAmount },
   filters: {
     numberFormat,
   },

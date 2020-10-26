@@ -11,17 +11,19 @@
     </h4>
     <span class="catalog__price"> {{ product.price | numberFormat }} ₽</span>
     
-    <ul class="colors">
-      <CatalogColors :class="{'colors--black': actualColors}"
-                     v-for="color in actualColors" :key="color.id" :valueColor="color" 
-                     @select="selectColor" :selected-color="selectedColor" />
+    <ul class="colors" :class="{'colors--black': actualColors}" >
+      <li class="colors__item" v-for="color in actualColors" :key="color.id">
+        <label class="colors__label colors__label--catalog">
+          <input class="colors__radio sr-only" type="radio" :value="color.color" v-model="selectedColor">
+          <span class="colors__value" :class="{'colors__value--selected': selectColor}" :style="{'background-color': color.color}"></span>
+        </label>
+      </li>
     </ul>
   </li>
 </template>
 
 <script>
 import colors from '@/data/colors';
-import CatalogColors from '@/components/catalog/CatalogColors.vue';
 import filteredColors from '@/helpers/filteredColors';
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
@@ -33,16 +35,15 @@ export default {
     };
   },
   props: ['product'],
-  components: { CatalogColors },
   filters: { 
     color: filteredColors,
     numberFormat,
   },
   methods: {
     selectColor(valueColor) {
-      this.selectedColor = { id: valueColor.id, color: valueColor.color };
+      this.selectedColor = valueColor;
     },
-    gotoPage, // defining the helper in methods
+    gotoPage,
   },
   computed: {
     actualColors() {

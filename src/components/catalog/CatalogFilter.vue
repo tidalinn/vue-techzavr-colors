@@ -31,14 +31,7 @@
       <!-- Color filter -->
       <fieldset class="form__block">
         <legend class="form__legend">Цвет</legend>
-        <ul class="colors">
-          <li class="colors__item" v-for="color in colors" :key="color.id">
-            <label class="colors__label colors__label--catalog">
-              <input class="colors__radio sr-only" type="radio" :value="color.id" v-model="currentColor">
-              <span class="colors__value" :class="{'colors__value--selected': selectColor}" :style="{'background-color': color.color}"></span>
-            </label>
-          </li>
-        </ul>
+        <BaseColors :colors="colors" @change-color="getColor" />
       </fieldset>
 
       <button class="filter__submit button button--primery" type="submit">Применить</button>
@@ -48,6 +41,7 @@
 </template>
 
 <script>
+import BaseColors from '@/components/BaseColors.vue';
 import categories from '@/data/categories';
 import colors from '@/data/colors';
 
@@ -61,6 +55,7 @@ export default {
     };
   },
   props: ['priceFrom', 'priceTo', 'categoryId', 'colorCode'],
+  components: { BaseColors },
   computed: {
     categories() {
       return categories;
@@ -96,8 +91,8 @@ export default {
       this.$emit('update:categoryId', 0);
       this.$emit('update:colorCode', 0);
     },
-    selectColor(valueColor) {
-      this.currentColor = valueColor;
+    getColor(color) {
+      this.currentColor = color;
     },
   },
 };

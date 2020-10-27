@@ -11,18 +11,12 @@
     </h4>
     <span class="catalog__price"> {{ product.price | numberFormat }} ₽</span>
     
-    <ul class="colors" :class="{'colors--black': actualColors}" >
-      <li class="colors__item" v-for="color in actualColors" :key="color.id">
-        <label class="colors__label colors__label--catalog">
-          <input class="colors__radio sr-only" type="radio" :value="color.color" v-model="selectedColor">
-          <span class="colors__value" :class="{'colors__value--selected': selectColor}" :style="{'background-color': color.color}"></span>
-        </label>
-      </li>
-    </ul>
+    <BaseColors :class="{'colors--black': actualColors}" :colors="actualColors" @change-color="getColor" />
   </li>
 </template>
 
 <script>
+import BaseColors from '@/components/BaseColors.vue';
 import colors from '@/data/colors';
 import filteredColors from '@/helpers/filteredColors';
 import gotoPage from '@/helpers/gotoPage';
@@ -31,17 +25,18 @@ import numberFormat from '@/helpers/numberFormat';
 export default {
   data() {
     return {
-      selectedColor: {},
+      colorFromChildConponent: null,
     };
   },
   props: ['product'],
+  components: { BaseColors },
   filters: { 
     color: filteredColors,
     numberFormat,
   },
   methods: {
-    selectColor(valueColor) {
-      this.selectedColor = valueColor;
+    getColor(color) {
+      this.colorFromChildConponent = color;
     },
     gotoPage,
   },

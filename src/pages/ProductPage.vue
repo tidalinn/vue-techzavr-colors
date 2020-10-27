@@ -41,16 +41,7 @@
             <!-- Colors -->
             <fieldset class="form__block">
               <legend class="form__legend">Цвет:</legend>
-              <ul class="colors">
-                <ul class="colors" >
-                  <li class="colors__item" v-for="color in actualColors" :key="color.id">
-                    <label class="colors__label colors__label--catalog">
-                      <input class="colors__radio sr-only" type="radio" :value="color.color" v-model="selectedColor">
-                      <span class="colors__value" :class="{'colors__value--selected': selectColor}" :style="{'background-color': color.color}"></span>
-                    </label>
-                  </li>
-                </ul>
-              </ul>
+              <BaseColors :colors="actualColors" @change-color="getColor" />
             </fieldset>
 
             <div class="item__row">
@@ -96,6 +87,7 @@
 </template>
 
 <script>
+import BaseColors from '@/components/BaseColors.vue';
 import BaseAddReduceAmount from '@/components/BaseAddReduceAmount.vue';
 import catalog from '@/data/catalog';
 import categories from '@/data/categories';
@@ -107,17 +99,17 @@ import filteredColors from '@/helpers/filteredColors';
 export default {
   data() {
     return {
-      selectedColor: null,
+      colorFromChildConponent: null,
       productAmount: 1,
     };
   },
-  components: { BaseAddReduceAmount },
+  components: { BaseColors, BaseAddReduceAmount },
   filters: {
     numberFormat,
   },
   methods: {
-    selectColor(valueColor) {
-      this.selectedColor = valueColor;
+    getColor(color) {
+      this.colorFromChildConponent = color;
     },
     addToCart() {
       this.$store.commit(

@@ -8,7 +8,7 @@
       <CatalogFilter :price-from.sync="filterPriceFrom" 
                      :price-to.sync="filterPriceTo" 
                      :category-id.sync="filterCategoryId"
-                     :color-code.sync="filterColor" /> 
+                     :color-code.sync="filterColor" />
       <section class="catalog">
         <h4 class="catalog__void" v-if="products.length === 0">Упс, здесь ничего нет</h4>
         <CatalogList :catalog="products" />

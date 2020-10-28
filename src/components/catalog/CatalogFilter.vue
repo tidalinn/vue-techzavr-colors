@@ -31,7 +31,7 @@
       <!-- Color filter -->
       <fieldset class="form__block">
         <legend class="form__legend">Цвет</legend>
-        <BaseColors :colors="colors" @change-color="getColor" />
+        <BaseColors :colors="colors" :selected-color.sync="currentColor" />
       </fieldset>
 
       <button class="filter__submit button button--primery" type="submit">Применить</button>

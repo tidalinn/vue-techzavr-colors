@@ -11,7 +11,8 @@
     </h4>
     <span class="catalog__price"> {{ product.price | numberFormat }} ₽</span>
     
-    <BaseColors :class="{'colors--black': actualColors}" :colors="actualColors" @change-color="getColor" />
+    <BaseColors :class="{'colors--black': actualColors}" :colors="actualColors" 
+                :selected-color.sync="colorFromChildConponent" />
   </li>
 </template>
 

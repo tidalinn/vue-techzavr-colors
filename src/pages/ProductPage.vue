@@ -41,7 +41,7 @@
             <!-- Colors -->
             <fieldset class="form__block">
               <legend class="form__legend">Цвет:</legend>
-              <BaseColors :colors="actualColors" @change-color="getColor" />
+              <BaseColors :colors="actualColors" :selected-color.sync="colorFromChildConponent" />
             </fieldset>
 
             <div class="item__row">

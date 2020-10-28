@@ -1,5 +1,5 @@
 {
-  "name": "3.4_vue-techzavr",
+  "name": "vue-techzavr-colors",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -30,15 +30,15 @@
   "main": ".eslintrc.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tidalinn/vue-techzavr.git"
+    "url": "git+https://github.com/tidalinn/vue-techzavr-colors.git"
   },
   "keywords": [
-    "vue-techzavr"
+    "vue-techzavr-colors"
   ],
   "author": "Gradt",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tidalinn/vue-techzavr/issues"
+    "url": "https://github.com/tidalinn/vue-techzavr-colors/issues"
   },
-  "homepage": "https://github.com/tidalinn/vue-techzavr#readme"
+  "homepage": "https://github.com/tidalinn/vue-techzavr-colors#readme"
 }
